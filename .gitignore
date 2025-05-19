@@ -1,0 +1,6 @@
+node_modules\n.DS_Store
+echo "node_modules/
+.vscode/
+*.log
+bash.exe.stackdump
+" > .gitignore
