@@ -1,14 +1,178 @@
 <!DOCTYPE html>
-<html lang=\"es\">
-<head>
-  <meta charset=\"UTF-8\" />
-  <title>Gym JS - Índice de ejercicios</title>
-</head>
-<body>
-  <h1>Ejercicios de JavaScript - Gym Laboratoria</h1>
-  <ul>
-    <li><a href="./sesiones/01-intro/demo.html" target=\"_blank\">Sesión 01 - Introducción</a></li>
-    <!-- Aquí agregarás más enlaces -->
-  </ul>
-</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejercicios JavaScript - Laboratoria</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <h1>Ejercicios de JavaScript</h1>
+    <!-- Lista con enlaces -->
+    <!-- cuando el usuario haga clic en uno de estos enlaces, se muestre el ejercicio correspondiente. -->
+    <ul>
+      <li>
+        <a href="#" onclick="mostrarEjercicio(1)"
+          >Sesión 01 - Sumar dos números</a
+        >
+      </li>
+      <li>
+        <a href="#" onclick="mostrarEjercicio(2)"
+          >Sesión 02 - Calcular el cuadrado de un número</a
+        >
+      </li>
+      <li>
+        <a href="#" onclick="mostrarEjercicio(3)"
+          >Sesión 03 - Sumar solo positivos</a
+        >
+      </li>
+
+      <li>
+        <a href="#" onclick="mostrarEjercicio(4)"
+          >Sesión 04 - Contar positivos - sumar negativos</a
+        >
+      </li>
+    </ul>
+    <!-- contenedor vacío donde se mostrará el contenido dinámico de cada ejercicio. -->
+    <div id="contenido" class="card"></div>
+
+    <!-- El script (todo lo que hace funcionar la lógica) -->
+    <script>
+      function sumar(a, b) {
+        return a + b;
+      }
+
+      function cuadrado(n) {
+        return n * n;
+      }
+
+      function sumarSoloPositivos(arr) {
+        let suma = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] > 0) {
+            suma += arr[i];
+          }
+        }
+        return suma;
+      }
+      function countPositivesSumNegatives(input) {
+        // 1. Revisar si no me mandaron nada
+        if (!input || input.length === 0) {
+          return [];
+        }
+
+        // 2. Crear mis contadores
+        let positivo = 0;
+        let sumanegativo = 0;
+
+        // 3. Recorrer todos los números uno por uno
+        for (let i = 0; i < input.length; i++) {
+          if (input[i] > 0) {
+            positivo++; // si es positivo, sumo al contador
+          } else if (input[i] < 0) {
+            sumanegativo += input[i]; // si es negativo, lo sumo
+          }
+        }
+
+        // 4. Devuelvo los resultados
+        return [positivo, sumanegativo];
+      }
+
+      //  Función para mostrar los ejercicios dinámicamente
+      //  Recibe un número como parámetro y muestra el ejercicio correspondiente.
+      //  Cambia el contenido del contenedor con el id "contenido" según el ejercicio seleccionado.
+      //  Genera un bloque de HTML con la explicación y el resultado.
+      function mostrarEjercicio(numero) {
+        const contenedor = document.getElementById("contenido");
+
+        if (numero === 1) {
+          const resultado = sumar(3, 4);
+          contenedor.innerHTML = `
+                      <h2>Sesión 01 - Sumar dos números</h2>
+                      <p><strong>Descripción:</strong> Crear una función que reciba dos números y devuelva su suma.</p>
+                      <pre>
+            function sumar(a, b) {
+              return a + b;
+            }
+                      </pre>
+                      <p><strong>Resultado de sumar(3, 4):</strong> <span class="resultado">${resultado}</span></p>
+                    `;
+        }
+
+        if (numero === 2) {
+          const resultado = cuadrado(5);
+          contenedor.innerHTML = `
+                      <h2>Sesión 02 - Calcular el cuadrado de un número</h2>
+                      <p><strong>Descripción:</strong> Crear una función que reciba un número y devuelva su cuadrado.</p>
+                      <pre>
+            function cuadrado(n) {
+              return n * n;
+            }
+                      </pre>
+                      <p><strong>Resultado de cuadrado(5):</strong> <span class="resultado">${resultado}</span></p>
+                    `;
+        }
+
+        if (numero === 3) {
+          const numeros = [1, -4, 7, 12];
+          const resultado = sumarSoloPositivos(numeros);
+          contenedor.innerHTML = `
+                      <h2>Sesión 03 - Sumar sólo positivos </h2>
+                      <p><strong>Descripción:</strong> Crear una funcion que sólo sume los números positivos de este array [1, -4, 7, 12]</p>
+                      <pre>
+            function sumarSoloPositivos(arr) {
+            let suma = 0;
+            for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {
+            suma += arr[i];
+            }
+          }
+              return suma;
+            }
+          </pre>
+          <p><strong>Resultado:</strong> <span class="resultado">${resultado}</span></p>
+        `;
+        }
+
+        if (numero === 4) {
+          const input = [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15,
+          ];
+          const resultado = countPositivesSumNegatives(input);
+          contenedor.innerHTML = `
+                      <h2>Sesión 04 - Contar positivos- sumar negativos </h2>
+                      <p><strong>Descripción:</strong> Dada una matriz de números enteros.
+                      Devuelve una matriz, donde el primer elemento es el recuento de números positivos y el segundo elemento es la suma de números negativos. 0 no es ni positivo ni negativo.
+                      Si la entrada es una matriz vacía o es nula, devuelve una matriz vacía.</p>
+                      <pre>
+            function countPositivesSumNegatives(input) {
+         // 1. Revisar si no me mandaron nada
+            if (!input || input.length === 0) {
+            return [];
+          }
+
+          // 2. Crear mis contadores
+          let positivo = 0;
+          let sumanegativo = 0;
+
+          // 3. Recorrer todos los números uno por uno
+          for (let i = 0; i < input.length; i++) {
+            if (input[i] > 0) {
+              positivo++; // si es positivo, sumo al contador
+            } else if (input[i] < 0) {
+              sumanegativo += input[i]; // si es negativo, lo sumo
+            }
+          }
+
+          // 4. Devuelvo los resultados
+          return [positivo, sumanegativo];
+        }
+
+          </pre>
+          <p><strong>Resultado:</strong> <span class="resultado">${resultado}</span></p>
+        `;
+        }
+      }
+    </script>
+  </body>
 </html>
