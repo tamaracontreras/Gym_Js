@@ -49,4 +49,4 @@ CSS3 🎨
 
 JavaScript Vanilla (puro) ⚙️
 
-![Descripción del GIF]https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExam8zaTd2d2NwdzdoOTBoOThocHd6MGVjcXd3d2gwZ2J4c29uZGxoeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13HgwGsXF0aiGY/giphy.gif
+![Descripción del GIF](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExam8zaTd2d2NwdzdoOTBoOThocHd6MGVjcXd3d2gwZ2J4c29uZGxoeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13HgwGsXF0aiGY/giphy.gif)
