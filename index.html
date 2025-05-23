@@ -32,6 +32,16 @@
           >Sesión 04 - Contar positivos - sumar negativos</a
         >
       </li>
+      <li>
+        <a href="#" onclick="mostrarEjercicio(5)"
+          >Sesión 05 - Saludo personalizado (Strings + funciones)</a
+        >
+      </li>
+      <li>
+        <a href="#" onclick="mostrarEjercicio(6)"
+          >BONUS - Número aleatorio entre 1 y 10</a
+        >
+      </li>
     </ul>
     <!-- contenedor vacío donde se mostrará el contenido dinámico de cada ejercicio. -->
     <div id="contenido" class="card"></div>
@@ -55,6 +65,7 @@
         }
         return suma;
       }
+
       function countPositivesSumNegatives(input) {
         // 1. Revisar si no me mandaron nada
         if (!input || input.length === 0) {
@@ -76,6 +87,14 @@
 
         // 4. Devuelvo los resultados
         return [positivo, sumanegativo];
+      }
+
+      function saludar(nombre) {
+        return `Hola ${nombre}!`;
+      }
+
+      function numeroAleatorio() {
+        return Math.floor(Math.random() * 10) + 1;
       }
 
       //  Función para mostrar los ejercicios dinámicamente
@@ -141,7 +160,8 @@
           const resultado = countPositivesSumNegatives(input);
           contenedor.innerHTML = `
                       <h2>Sesión 04 - Contar positivos- sumar negativos </h2>
-                      <p><strong>Descripción:</strong> Dada una matriz de números enteros.
+                      <p><strong>Descripción:</strong> Dada una matriz de números enteros:
+                      input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15,];
                       Devuelve una matriz, donde el primer elemento es el recuento de números positivos y el segundo elemento es la suma de números negativos. 0 no es ni positivo ni negativo.
                       Si la entrada es una matriz vacía o es nula, devuelve una matriz vacía.</p>
                       <pre>
@@ -167,10 +187,45 @@
           // 4. Devuelvo los resultados
           return [positivo, sumanegativo];
         }
+          const misDatos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15];
+        // Probar la función
+        console.log(countPositivesSumNegatives(misDatos));
 
           </pre>
           <p><strong>Resultado:</strong> <span class="resultado">${resultado}</span></p>
         `;
+        }
+        if (numero === 5) {
+          const nombre = "Tam";
+          const resultado = saludar(nombre);
+          contenedor.innerHTML = `
+                      <h2>Sesión 05 - Saludo personalizado</h2>
+                      <p><strong>Descripción:</strong> Crear una función que reciba un nombre y devuelva un saludo personalizado.</p>
+                      <pre>
+          function saludar(nombre) {
+          return "Hola " + nombre + "!";
+      }
+
+          console.log(saludar("Tam"));
+                      </pre>
+                      <p><strong>Resultado de saludar("Tam"):</strong> <span class="resultado">${resultado}</span></p>
+                    `;
+        }
+
+        if (numero === 6) {
+          const resultado = Math.floor(Math.random() * 10) + 1;
+          contenedor.innerHTML = `
+    <h2>BONUS - Número aleatorio entre 1 y 10</h2>
+    <p><strong>Descripción:</strong> Crear una función que devuelva un número aleatorio entre 1 y 10.</p>
+    <pre>
+function numeroAleatorio() {
+  return Math.floor(Math.random() * 10) + 1;
+}
+
+console.log(numeroAleatorio());
+    </pre>
+    <p><strong>Resultado de numeroAleatorio():</strong> ${resultado}</p>
+  `;
         }
       }
     </script>
